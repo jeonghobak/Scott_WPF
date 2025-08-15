@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36401.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Draggable_Axis_Lines", "Draggable_Axis_Lines.csproj", "{CECBFB8E-F575-4C00-9A53-CD5A01B0EDD7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CECBFB8E-F575-4C00-9A53-CD5A01B0EDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CECBFB8E-F575-4C00-9A53-CD5A01B0EDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CECBFB8E-F575-4C00-9A53-CD5A01B0EDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CECBFB8E-F575-4C00-9A53-CD5A01B0EDD7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8FB328C-AEE1-45C3-8E96-2EB996FBDC1F}
+	EndGlobalSection
+EndGlobal
