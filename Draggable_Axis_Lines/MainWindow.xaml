@@ -28,7 +28,7 @@
         </ToolBar>
 
         <Grid>
-            <ContentControl Grid.Row="0" Grid.Column="1" Content="{Binding PlotControl}"/>
+            <ContentControl Content="{Binding PlotControl}"/>
         </Grid>
 
     </DockPanel>
