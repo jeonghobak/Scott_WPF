@@ -14,29 +14,32 @@ using System.Windows.Input;
 namespace ShowValueUnderMouse.ViewModel
 {
     public class MainChartVM : INotifyPropertyChanged
-    {   
-        public MainChartVM()
+    {
+        private WpfPlot m_WpfPlot;
+
+        private Signal m_Signal;
+        public  Signal Signal
         {
-            PlotControl = new WpfPlot();
-            GenerateCommand = new RelayCommand(GenerateSample);
-            PlotControl.MouseMove += PlotControl_MouseMove;
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public Signal Signal { get; set; }        
-        public WpfPlot PlotControl { get; }
-        public Crosshair PlotCrosshair { get; set; }
-
-        private string statusText;
-        public string StatusText
-        {
-            get { return statusText; }
+            get { return m_Signal; }
             set
             {
-                if (statusText != value)
+                if (m_Signal != value)
                 {
-                    statusText = value;
+                    m_Signal = value;
+                    OnPropertyChanged(nameof(Signal));
+                }
+            }
+        }
+
+        private string m_StatusText;
+        public  string StatusText
+        {
+            get { return m_StatusText; }
+            set
+            {
+                if (m_StatusText != value)
+                {
+                    m_StatusText = value;
                     OnPropertyChanged(nameof(StatusText));
                 }
             }
@@ -44,51 +47,20 @@ namespace ShowValueUnderMouse.ViewModel
 
         public ICommand GenerateCommand { get; private set; }
 
-        private void PlotControl_MouseMove(object sender, MouseEventArgs e)
+        public MainChartVM(WpfPlot wpfPlot)
         {
-            if(null == Signal || null == PlotControl)
-            {
-                return;
-            }
-
-            var mousePos = e.GetPosition(PlotControl);
-
-            Pixel mousePixel = new Pixel()
-            {
-                X = (int)(mousePos.X * PlotControl.DisplayScale),
-                Y = (int)(mousePos.Y * PlotControl.DisplayScale)
-            };
-            
-            Coordinates mouseLocation = PlotControl.Plot.GetCoordinates(mousePixel);
-
-            DataPoint nearest = Signal.GetNearest(mouseLocation, PlotControl.Plot.LastRender);
-
-            if(nearest.IsReal == true)
-            {
-                PlotCrosshair.IsVisible = true;
-                PlotCrosshair.Position = nearest.Coordinates;
-
-                StatusText = $"X:{nearest.Coordinates.X:F2}, Y: {nearest.Coordinates.Y:F2}";
-                
-                PlotControl.Refresh();
-            }
+            m_WpfPlot = wpfPlot;
+            GenerateCommand = new RelayCommand(GenerateSample);
         }
 
         private void GenerateSample()
         {
-            Signal = PlotControl.Plot.Add.Signal(Generate.RandomWalk(1_000_000));
-
-            PlotCrosshair = PlotControl.Plot.Add.Crosshair(0, 0);
-            PlotCrosshair.IsVisible = false;
-            PlotCrosshair.MarkerShape = MarkerShape.OpenCircle;
-            PlotCrosshair.MarkerSize = 15;
-
-            PlotControl.Plot.Axes.AutoScale();
-            PlotControl.Refresh();
+            Signal = m_WpfPlot.Plot.Add.Signal(Generate.RandomWalk(1_000_000));
+            m_WpfPlot.Plot.Axes.AutoScale();
+            m_WpfPlot.Refresh();
         }
 
-
-
+        public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

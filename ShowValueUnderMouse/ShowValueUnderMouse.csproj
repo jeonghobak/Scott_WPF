@@ -12,8 +12,4 @@
     <PackageReference Include="ScottPlot.WPF" Version="5.0.55" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="View\Behavior\" />
-  </ItemGroup>
-
 </Project>

@@ -3,15 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ScottPlot="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF"
         xmlns:vm="clr-namespace:ShowValueUnderMouse.ViewModel"
         xmlns:local="clr-namespace:ShowValueUnderMouse"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1500">
-    <Window.Resources>
-        <vm:MainChartVM x:Key="vm"/>
-    </Window.Resources>
 
-    <DockPanel DataContext="{StaticResource vm}">
+    <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Click="MenuItem_Click"/>
@@ -27,11 +25,12 @@
         <ToolBar DockPanel.Dock="Top">
             <Button Content="Generate"
                     Margin="5,0,0,0"
-                    Command="{Binding GenerateCommand}"/> "
+                    Command="{Binding GenerateCommand}"/>
         </ToolBar>
 
         <Grid>
-            <ContentControl Content="{Binding PlotControl}"/>
+            <!-- <ContentControl Content="{Binding PlotControl}"/> -->
+            <ScottPlot:WpfPlot x:Name="PlotControl"/>
         </Grid>
 
     </DockPanel>
