@@ -36,12 +36,11 @@ namespace ShowValueUnderMouse
                 switch(e.PropertyName)
                 {
                     case nameof(MainChartVM.ChartData):
-                        m_Signal = PlotControl.Plot.Add.Signal(m_ViewModel.ChartData);                        
+                        m_Signal = PlotControl.Plot.Add.Signal(m_ViewModel.ChartData);
+                        PlotControl.Plot.Axes.AutoScale();
+                        PlotControl.Refresh();
                         break;
                 }
-
-                PlotControl.Plot.Axes.AutoScale();
-                PlotControl.Refresh();
             };
 
             InitPlotControl();
