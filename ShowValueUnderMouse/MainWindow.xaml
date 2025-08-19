@@ -8,8 +8,11 @@
         xmlns:local="clr-namespace:ShowValueUnderMouse"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1500">
+    <Window.Resources>
+        <vm:MainChartVM x:Key="vm"/>
+    </Window.Resources>
 
-    <DockPanel>
+    <DockPanel DataContext="{StaticResource vm}">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Click="MenuItem_Click"/>
