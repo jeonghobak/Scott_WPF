@@ -1,7 +1,9 @@
 # Scott_WPF
-Scott 라이브러리를 WPF에서 사용하기 위해,
-윈폼으로 구현 된 [ScottPlot.NET Demo](https://scottplot.net/demo/5.0/) 의 내용을 WPF로 재 구현하였습니다.  
-(`필요한 부분만 구현하였기에 모든 Demo 내용이 포함되어 있지는 않습니다.`)
+윈폼으로 구현 된 [ScottPlot.NET Demo](https://scottplot.net/demo/5.0/) 내용을 WPF 로 재 수정하였습니다.
+
+## Note
+동작 로직은 윈폼에 구현 된 내용과 차이가 거의 없습니다.
+그리고 아직 WPF 학습 중이기에 구조상 틀린 부분이 있을 수 있습니다
 
 ## License
 This project uses [ScottPlot](https://github.com/ScottPlot/ScottPlot),  
